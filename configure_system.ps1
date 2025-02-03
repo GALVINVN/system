@@ -1,3 +1,21 @@
+Remove-Item -Path "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\*" -Force
+$source = "C:\Users\Public\Downloads\Autorun.vbs"
+$destination = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\Autorun.vbs.lnk"
+$WshShell = New-Object -ComObject WScript.Shell
+$shortcut = $WshShell.CreateShortcut($destination)
+$shortcut.TargetPath = $source
+$shortcut.Save()
+$ShortcutPath = "C:\Users\Public\Downloads\Startup Folder.lnk"
+$TargetPath = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup"
+$WScriptShell = New-Object -ComObject WScript.Shell
+$Shortcut = $WScriptShell.CreateShortcut($ShortcutPath)
+$Shortcut.TargetPath = $TargetPath
+$Shortcut.Save()
+$folder = "C:\Users\Public\Downloads\Startup Folder.lnk"
+$acl = Get-Acl $folder
+$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("Everyone", "Delete", "Deny")
+$acl.AddAccessRule($accessRule)
+Set-Acl -Path $folder -AclObject $acl
 Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name "AutoAdminLogon" -Value "1"
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\PassportForWork" -Force
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\PassportForWork" -Name "Enabled" -Type DWord -Value 0
@@ -41,21 +59,5 @@ Get-ScheduledTask | ForEach-Object {Unregister-ScheduledTask -TaskName $_.TaskNa
 Stop-Service -Name UsoSvc -Force
 schtasks /Change /TN "\Microsoft\Windows\UpdateOrchestrator\Reboot" /DISABLE
 schtasks /Query /TN "\Microsoft\Windows\UpdateOrchestrator\Reboot"
-$source = "C:\Users\Public\Downloads\Autorun.vbs"
-$destination = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\Autorun.vbs.lnk"
-$WshShell = New-Object -ComObject WScript.Shell
-$shortcut = $WshShell.CreateShortcut($destination)
-$shortcut.TargetPath = $source
-$shortcut.Save()
-$ShortcutPath = "C:\Users\Public\Downloads\Startup Folder.lnk"
-$TargetPath = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup"
-$WScriptShell = New-Object -ComObject WScript.Shell
-$Shortcut = $WScriptShell.CreateShortcut($ShortcutPath)
-$Shortcut.TargetPath = $TargetPath
-$Shortcut.Save()
-$folder = "C:\Users\Public\Downloads\Startup Folder.lnk"
-$acl = Get-Acl $folder
-$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("Everyone", "Delete", "Deny")
-$acl.AddAccessRule($accessRule)
-Set-Acl -Path $folder -AclObject $acl
+Clear-RecycleBin -Force
 exit
