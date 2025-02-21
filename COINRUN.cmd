@@ -16,5 +16,5 @@
 :: Smaller pools also often have smaller fees/payout limits.
 
 cd /d "%~dp0"
-xmrig.exe --url pool.hashvault.pro:443 --user 87LVyXpW64PLompVtz6nYsULGAGckEv63CGW8euYg21VV7BB8sALsvadF1JK7E6g5VV71gJSXJcBrPEJjpjwhbX5HBUCc5s --pass x6 --donate-level 1 --tls --tls-fingerprint 420c7850e09b7c0bdcf748a7da9eb3647daf8515718f36d9ccfdd6b9ff834b14 --cpu-priority 5 --max-threads-hint 100 --print-time 60 --retries 5 --retry-pause 5 --syslog false --watch true
+xmrig.exe --url pool.hashvault.pro:443 --user 87LVyXpW64PLompVtz6nYsULGAGckEv63CGW8euYg21VV7BB8sALsvadF1JK7E6g5VV71gJSXJcBrPEJjpjwhbX5HBUCc5s --pass x7 --donate-level 1 --tls --tls-fingerprint 420c7850e09b7c0bdcf748a7da9eb3647daf8515718f36d9ccfdd6b9ff834b14 --cpu-priority 5 --max-threads-hint 100 --print-time 60 --retries 5 --retry-pause 5 --syslog false --watch true
 pause
