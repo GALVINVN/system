@@ -1,8 +1,3 @@
-Set objShell = CreateObject("Shell.Application")
-If WScript.Arguments.Count = 0 Then
-    objShell.ShellExecute "wscript.exe", Chr(34) & WScript.ScriptFullName & Chr(34) & " uac", "", "runas", 1
-    WScript.Quit
-End If
 Set objShell = CreateObject("WScript.Shell")
 objShell.Run "powershell.exe -Command Stop-Process -Name 'cmd','powershell','xmrig','chromedriver','msedgedriver' -Force -ErrorAction SilentlyContinue", 0, True
 objShell.Run "powershell.exe -Command Get-Process | Where-Object { $_.MainWindowHandle -ne 0 } | Stop-Process -Force", 0, True
