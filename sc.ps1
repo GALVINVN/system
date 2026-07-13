@@ -1,6 +1,12 @@
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
 $xmrigFolder = "C:\xmrig"
 $serviceName = "XMRig_KonTum"
+New-Item -ItemType Directory -Force -Path $xmrigFolder | Out-Null
+$zipUrl = "https://github.com/xmrig/xmrig/releases/download/v6.26.0/xmrig-6.26.0-windows-x64.zip"
+$zipPath = "$env:TEMP\xmrig.zip"
+Download-File $zipUrl $zipPath
+Expand-Archive -Path $zipPath -DestinationPath $xmrigFolder -Force
+$xmrigExe = Get-ChildItem -Path $xmrigFolder -Recurse -Filter "xmrig.exe" | Select-Object -First 1 -ExpandProperty FullName
 function Download-File {
     param(
         [string]$Url,
@@ -55,12 +61,6 @@ function Download-File {
     }
 
 }
-New-Item -ItemType Directory -Force -Path $xmrigFolder | Out-Null
-$zipUrl = "https://github.com/xmrig/xmrig/releases/download/v6.26.0/xmrig-6.26.0-windows-x64.zip"
-$zipPath = "$env:TEMP\xmrig.zip"
-Download-File $zipUrl $zipPath
-Expand-Archive -Path $zipPath -DestinationPath $xmrigFolder -Force
-$xmrigExe = Get-ChildItem -Path $xmrigFolder -Recurse -Filter "xmrig.exe" | Select-Object -First 1 -ExpandProperty FullName
 $nssmZipUrl = "https://nssm.cc/ci/nssm-2.24-101-g897c7ad.zip"
 $nssmZipPath = "$env:TEMP\nssm.zip"
 Download-File $nssmZipUrl $nssmZipPath
